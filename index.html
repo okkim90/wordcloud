@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .anychart-credits {
+            display: none;
+
+        }
+        #wrap {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chart_wrap {
+            width: 100%;
+            max-width: 1920px;
+            background-color: #ccc;
+        }
+        .chart-area {
+            padding-top: 18.75%;
+            position: relative;
+        }
+        #chart-cloud {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+        }
+
+    </style>
+<body>
+    <div id="wrap">
+        <div class="chart_wrap">
+            <div class="chart-area">
+                <div id="chart-cloud"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        anychart.onDocumentReady(function () {
+            var data = [
+                {x: "PASS", value: 90, category: "rank1"},
+                {x: "HELLO", value: 80, category: "rank2"},
+                {x: "Good", value: 80, category: "rank2"},
+                {x: "FUTURE", value: 80, category: "rank2"},
+                {x: "learning", value: 70, category: "rank3"},
+                {x: "includes", value: 68, category: "rank3"},
+                {x: "lists", value: 54, category: "rank4"},
+                {x: "meaning", value: 40, category: "rank4"},
+                {x: "useful", value: 36, category: "rank5"},
+                {x: "different", value: 32, category: "rank6"},
+                {x: "grammar", value: 28, category: "rank6"},
+                {x: "teaching", value: 24, category: "rank7"},
+                {x: "teaching", value: 24, category: "rank7"},
+                {x: "teaching", value: 24, category: "rank7"},
+                {x: "teaching", value: 24, category: "rank7"},
+                {x: "example", value: 20, category: "rank8"},
+                {x: "example", value: 20, category: "rank8"},
+                {x: "example", value: 20, category: "rank8"},
+                {x: "thing", value: 12, category: "rank8"},
+                {x: "different", value: 10, category: "rank9"},
+                {x: "grammar", value: 10, category: "rank9"},
+                {x: "teaching", value: 10, category: "rank10"},
+                {x: "example", value: 10, category: "rank10"},
+                {x: "thing", value: 10, category: "rank10"},
+                {x: "different", value: 10, category: "rank10"},
+                {x: "grammar", value: 8, category: "rank11"},
+                {x: "teaching", value: 8, category: "rank11"},
+                {x: "example", value: 8, category: "rank11"},
+                {x: "thing", value: 8, category: "rank11"},
+                {x: "teaching", value: 8, category: "rank11"},
+                {x: "example", value: 8, category: "rank11"},
+                {x: "thing", value: 8, category: "rank11"},
+                {x: "teaching", value: 8, category: "rank11"},
+                {x: "example", value: 8, category: "rank11"},
+                {x: "thing", value: 8, category: "rank11"},
+                {x: "teaching", value: 8, category: "rank11"},
+                {x: "example", value: 8, category: "rank11"},
+                {x: "thing", value: 8, category: "rank11"}
+            ];
+
+            var chart = anychart.tagCloud(data);
+
+            // rank1 부터 rank11 까지 매치되는 컬러 (순서대로)
+            var colorset = ['#075595', '#548AA4', '#F68E51', '#CC3C7C','#B995C5','#EFCB5D','#c6a68f','#55704b','#7eb6d5','#1da48d','#aaa']
+
+            var customColorScale = anychart.scales.ordinalColor();
+            customColorScale.colors(colorset);
+
+
+            chart.colorScale(customColorScale);
+
+            //chart.palette(['#075595', '#548AA4', '#F68E51', '#CC3C7C','#B995C5','#EFCB5D','#c6a68f','#55704b','#7eb6d5','#1da48d','#aaa']);
+
+            chart.angles([0]);
+            chart.container("chart-cloud");
+            chart.draw();
+        });
+        </script>
+</body>
+</html>
